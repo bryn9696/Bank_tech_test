@@ -33,4 +33,11 @@ describe Balance do
     expect(balance.deposit(-2014, 1000)).to eq([["Date||Credit||Debit||Balance"], ["-2014||1000|| ||1000"]])
   end
 
+  it 'shows full bank statement' do
+    balance = Balance.new
+    expect(balance.withdraw(-2014, 40)).to eq(balance.statement)
+    p balance.statement
+    expect(balance.deposit(-2014, 100)).to eq(balance.statement)  
+  end
+
 end

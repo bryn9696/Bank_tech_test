@@ -2,8 +2,11 @@
 
 App to print bank account statement.
 
-Use irb to operate the system
-Enter date and the amount to deposit as an argument
+Use irb to operate the system.
+Enter date and the amount to deposit as an argument.
 
-language - Ruby 
-tests run with Rspec
+This was written with a test driven approach.
+
+Language - Ruby 
+Run bundle install
+Tests run with Rspec

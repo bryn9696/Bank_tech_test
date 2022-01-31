@@ -4,7 +4,7 @@ class Balance
 
   DEFAULT_BALANCE = 0
   def initialize(balance = DEFAULT_BALANCE)
-    @balance = balance
+    @balance = balance.to_f
     @statement = [["Date||Credit||Debit||Balance"]]
   end
 
@@ -18,13 +18,13 @@ class Balance
   end
 
   def deposit(date, amount)
-    @balance += amount
+    @balance += amount.to_f
     deposit = ["#{date}||#{amount}|| ||#{@balance}"]
     @statement.insert(1, deposit)
   end
 
   def withdraw(day, amount)
-    @balance += (amount * -1)
+    @balance += (amount.to_f * -1)
     withdraw = ["#{day}|| ||#{amount}||#{@balance}"]
     @statement.insert(1, withdraw)
   end

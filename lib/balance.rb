@@ -1,22 +1,27 @@
 class Balance
 
-  attr_accessor :balance
+  attr_accessor :balance, :statement
 
   DEFAULT_BALANCE = 0
   def initialize(balance = DEFAULT_BALANCE)
-        @balance = balance
+    @balance = balance
+    @statement = [["Date", "Credit", "Debit", "Balance"]]
   end
 
-  def balance
-    return @balance
+  def bank_statement
+    return @statement
   end
 
-  def deposit(amount)
+  def deposit(date, amount)
     @balance += amount
+    deposit = [date, amount, " ", @balance]
+    @statement.insert(1, deposit)
   end
 
-  def withdraw(amount)
+  def withdraw(date, amount)
     @balance += (amount * -1)
+    withdraw = [date, amount, " ", @balance]
+    @statement.insert(1, withdraw)
   end
 
 end

@@ -1,3 +1,0 @@
-class Interaction
-
-end

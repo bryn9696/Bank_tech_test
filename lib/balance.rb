@@ -14,7 +14,7 @@ class Balance
   end
 
   def withdraw(amount)
-
+    return amount * -1
   end
 
 end

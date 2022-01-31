@@ -14,14 +14,14 @@ describe Balance do
     expect(balance.balance).to eq(-500)
   end
 
-  it 'adjusts balance after dposit followed by withdraw' do
+  it 'adjusts balance after deposit followed by withdraw' do
     balance = Balance.new
     balance.deposit(-2014, 100)
     balance.withdraw(-2014, 30)
     expect(balance.balance).to eq(70)
   end
 
-  it 'adjusts balance after dposit followed by withdraw' do
+  it 'adjusts balance after withdraw followed by deposit' do
     balance = Balance.new
     balance.withdraw(-2014, 40)
     balance.deposit(-2014, 100)
@@ -30,7 +30,7 @@ describe Balance do
 
   it 'shows amount deposited and balance in array' do
     balance = Balance.new
-    expect(balance.deposit(-2014, 1000)).to eq([["Date", "Credit", "Debit", "Balance"],
-    [-2014, 1000, " ", 1000]])
+    expect(balance.deposit(-2014, 1000)).to eq([["Date||Credit||Debit||Balance"], ["-2014||1000|| ||1000"]])
   end
+
 end

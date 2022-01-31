@@ -5,22 +5,27 @@ class Balance
   DEFAULT_BALANCE = 0
   def initialize(balance = DEFAULT_BALANCE)
     @balance = balance
-    @statement = [["Date", "Credit", "Debit", "Balance"]]
+    @statement = [["Date||Credit||Debit||Balance"]]
   end
 
   def bank_statement
-    return @statement
+    i = 0
+    loop do 
+      puts @statement[i]
+      i += 1
+      break if i > @statement.length
+    end
   end
 
   def deposit(date, amount)
     @balance += amount
-    deposit = [date, amount, " ", @balance]
+    deposit = ["#{date}||#{amount}|| ||#{@balance}"]
     @statement.insert(1, deposit)
   end
 
-  def withdraw(date, amount)
+  def withdraw(day, amount)
     @balance += (amount * -1)
-    withdraw = [date, amount, " ", @balance]
+    withdraw = ["#{day}|| ||#{amount}||#{@balance}"]
     @statement.insert(1, withdraw)
   end
 

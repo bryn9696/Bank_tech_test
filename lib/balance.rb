@@ -8,6 +8,15 @@ class Balance
     @statement = [["Date||Credit||Debit||Balance"]]
   end
 
+  def bank_statement
+    i = 0
+    loop do 
+      puts @statement[i]
+      i += 1
+      break if i > @statement.length
+    end
+  end
+
   def deposit(date, amount)
     @balance += amount.to_f.round(2)
     deposit = ["#{date}||#{amount}|| ||#{@balance}"]

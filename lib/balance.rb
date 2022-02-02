@@ -1,32 +1,28 @@
+require_relative 'printer.rb'
+require_relative 'transaction.rb'
+
 class Balance
 
   attr_accessor :balance, :statement
 
   DEFAULT_BALANCE = 0
   def initialize(balance = DEFAULT_BALANCE)
-    @balance = balance.to_f
-    @statement = [["Date||Credit||Debit||Balance"]]
+    @balance = balance
+    @statement = []
+    @printer = Printer.new
   end
 
-  def bank_statement
-    i = 0
-    loop do 
-      puts @statement[i]
-      i += 1
-      break if i > @statement.length
-    end
+  def deposit(amount)
+    @balance += amount
+    @statement.insert(0, Transaction.new(credit: amount, debit: nil, balance: @balance).info)
   end
 
-  def deposit(date, amount)
-    @balance += amount.to_f.round(2)
-    deposit = ["#{date}||#{amount}|| ||#{@balance}"]
-    @statement.insert(1, deposit)
+  def withdraw(amount)
+    @balance -= amount
+    @statement.insert(0, Transaction.new(credit: amount, debit: nil, balance: @balance).info)
   end
 
-  def withdraw(day, amount)
-    @balance += (amount.to_f.round(2) * -1)
-    withdraw = ["#{day}|| ||#{amount}||#{@balance}"]
-    @statement.insert(1, withdraw)
+  def print
+    @printer.bank_statement(@balance, @statement)
   end
-
 end

@@ -6,8 +6,11 @@ Use irb to operate the system.
 
 Require './balance'
 Declare a new instance of balance with balance = Balance.new
+
 To deposit run balance.deposit() with the amount to deposit as an argument.
+
 To withdraw run balance.withdraw() with the amount to withdraw as an argument.
+
 To print the statement run balance.print
 
 Language - Ruby 
